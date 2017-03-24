@@ -65,9 +65,9 @@ public class GameScreen extends AbstractScreen{
 	@Override
 	public void render(float delta) {
 						
-	//	refreschRooms();
+		refreschRooms();
 				
-		//checkStart();
+		checkStart();
 		
 		calculatePosition();
 		
