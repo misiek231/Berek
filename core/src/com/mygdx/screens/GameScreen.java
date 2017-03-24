@@ -193,7 +193,7 @@ public class GameScreen extends AbstractScreen{
 				data.put("x2", game.player2.getX());  
 				data.put("y2", game.player2.getY());  
 				data.put("b1", game.player1.isBerek); 
-				
+				System.out.println("Server wysy³a");
 				WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());			
 				
 			} catch (Exception e) {  
@@ -210,7 +210,7 @@ public class GameScreen extends AbstractScreen{
 				data.put("knobY", game.tuchpad.getKnobPercentY());  				  
 						
 				WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());
-								
+				System.out.println("Client wysy³a");	
 			} catch (Exception e) {  
 				System.out.println("B£AD@@@@@@@@ WYSY£U");
 			}  				
@@ -242,7 +242,7 @@ public class GameScreen extends AbstractScreen{
 						public void run() {
 
 							if(!game.start)
-								//this.cancel();
+								this.cancel();
 							
 							elapsedTime = (int)( (System.currentTimeMillis() - startTime)/1000 );
 							

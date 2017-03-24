@@ -38,7 +38,7 @@ public class Berek extends Game {
 	
 	public WarpController warpController;
 	
-	public boolean server = true;
+	public boolean server = false;
 	
 	public String roomId;
 	
