@@ -242,7 +242,9 @@ public class NotificationListener implements NotifyListener {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdatePeersReceived(UpdateEvent arg0) {
-		  if(!game.server){
+		 
+		
+		if(!game.server){
 	            try {  
 	                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
 	                float x1 = (float)data.getDouble("x1");  
@@ -266,6 +268,8 @@ public class NotificationListener implements NotifyListener {
 	               
 	                game.player1.isBerek = b1;
 	                game.player2.isBerek = !game.player1.isBerek;
+	                
+	                game.curentRoundTime = (String)data.get("time");
 	           
 	       
 	            } catch (Exception e) {  
@@ -292,6 +296,7 @@ public class NotificationListener implements NotifyListener {
 	                //System.out.println("BłAD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
 	            }
 	        }
+
 	}
 
 	@Override
