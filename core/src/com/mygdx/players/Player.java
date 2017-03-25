@@ -62,11 +62,9 @@ public class Player extends Rectangle{
 			if(x > Berek.GAME_WIDTH - 50){
 				
 				xTorque = -50/recoilPower;	
-<<<<<<< HEAD
-				
-=======
+
 				soundCollision.play();
->>>>>>> bab7d1b04a3a6de960113808aab4a25befecc70f
+
 			}
 			
 			if(y < 0){

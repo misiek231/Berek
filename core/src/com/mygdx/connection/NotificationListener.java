@@ -244,27 +244,29 @@ public class NotificationListener implements NotifyListener {
 	public void onUpdatePeersReceived(UpdateEvent arg0) {
 	//	System.out.println("onUpdatePeersReceived " + arg0.getUpdate().toString() + arg0.isUDP() );
 		
-		JSONObject data = null;
+/*		JSONObject data = null;
 		try {
 			data = new JSONObject(new String( arg0.getUpdate() ) );
 		} catch (JSONException e1) {
 			
 			e1.printStackTrace();
-		} 
+		} */
 		
 		if(!game.server){
 			
-			try{
-			//	game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
+	/*		try{
+				game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
 				
 				System.out.println("Objekty odebrane");
 				
 			} catch (Exception e) {  
 				
 				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@OBJEKTÓW");
-			} 
+			} */
 			
 			try {  
+				
+				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );
 				 
 				float x1 = (float)data.getDouble("x1");  
 				float y1 = (float)data.getDouble("y1");  
@@ -301,7 +303,7 @@ public class NotificationListener implements NotifyListener {
 			
 			try {  
 				
-				
+				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );
 				
 				float knobX = (float)data.getDouble("knobX");  
 				float knobY = (float)data.getDouble("knobY");  
