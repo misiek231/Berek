@@ -60,6 +60,8 @@ public class Berek extends Game {
 	
 	public String curentRoundTime;
 	
+	public long startTime;
+	
 	public Berek(){		
 		
 		super();		
