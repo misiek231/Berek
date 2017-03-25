@@ -7,7 +7,8 @@ import com.mygdx.game.Berek;
 import com.mygdx.players.Player;
 
 public class EscapeBoost extends RandomObject {
-
+	
+	private final float workTime = 10f;
 	private final float liveTime = 10f;
 	
 	public EscapeBoost(Berek game) {
@@ -27,9 +28,18 @@ public class EscapeBoost extends RandomObject {
 	}	
 
 	@Override
-	public void addEffectsToPlayers(Player playerTouchet, Player playerNotTouchet) {
+	public void addEffectsToPlayers(final Player playerTouchet, Player playerNotTouchet) {
 		// TODO Auto-generated method stub
+		playerTouchet.checkReflection = false;
 		
+		Timer.schedule(new Task() {
+			
+			@Override
+			public void run() {
+				playerTouchet.checkReflection = true;
+				
+			}
+		}, workTime);
 	}
 
 }
