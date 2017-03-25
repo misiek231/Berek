@@ -64,7 +64,7 @@ public class Berek extends Game {
 	
 	public long startTime;
 	
-	public Music music;
+	public Music menuMusic;
 	
 	public RandomObjectsControler randomObjectsControler;
 	
@@ -104,15 +104,18 @@ public class Berek extends Game {
 		
 		skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));		
 		
-		music = Gdx.audio.newMusic(Gdx.files.internal("music/backgroundMenuMusic.mp3"));
-		music.setLooping(true);;
-		music.play();
+		menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/backgroundMenuMusic.mp3"));
+		menuMusic.setLooping(true);;
+		menuMusic.play();
 		
 		tuchpad = new AnalogStick();
 			
 		player1 = new Player(true);
 		
 		player2 = new Player(false);
+		
+		player1.setPosition(0, 0);
+		player2.setPosition(670, 1220);
 		
 		warpController = new WarpController(this);
 		

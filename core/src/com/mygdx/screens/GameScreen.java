@@ -3,6 +3,9 @@ package com.mygdx.screens;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
@@ -33,8 +36,10 @@ public class GameScreen extends AbstractScreen{
 	
 	private boolean roundStart = false;
 	
+	private Music gameMusic;
 	
-	
+	private Sound soundCollision;
+		
 	public GameScreen(final Berek game) {
 		super(game);
 		
@@ -60,6 +65,12 @@ public class GameScreen extends AbstractScreen{
 		stage.addActor(player1Nick);
 		stage.addActor(player2Nick);
 		
+		game.menuMusic.stop();
+		gameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/backgroundGameMusic.mp3"));
+		gameMusic.setLooping(true);;
+		gameMusic.play();
+		
+		soundCollision = Gdx.audio.newSound(Gdx.files.internal("music/soundCollision.mp3"));
 	}
 
 
@@ -160,7 +171,7 @@ public class GameScreen extends AbstractScreen{
 			    	player1xTorque = (game.player1.x - game.player2.x)/recoilPower;
 			    	player1yTorque = (game.player1.y - game.player2.y)/recoilPower;
 			    	
-			    	
+			    	soundCollision.play();
 			    }
 		    	
 		    	
