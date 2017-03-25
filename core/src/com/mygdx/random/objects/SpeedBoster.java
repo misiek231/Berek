@@ -21,7 +21,7 @@ public class SpeedBoster extends RandomObject {
 	public SpeedBoster(Berek game) {		
 		super(game);
 		
-		texture = new Texture("randomObjects/SpeedBost.png");
+		texture = new Texture("randomObjects/SpeedBoost.png");
 		
 		Timer.schedule(new Task() {
 			
