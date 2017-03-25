@@ -1,5 +1,6 @@
 package com.mygdx.screens;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -73,6 +74,11 @@ public class GameScreen extends AbstractScreen{
 		
 		calculateNamePosition();	
 		
+		if(!game.server){
+			
+			lRoundTime.setText(game.curentRoundTime);
+		}
+		
 		game.player1.win = !game.player1.isBerek;
 		
 		game.player2.win = !game.player1.win;
@@ -94,6 +100,9 @@ public class GameScreen extends AbstractScreen{
 		sendData();
 	    	
 	}
+
+
+
 
 
 	private void calculateNamePosition() {
@@ -219,57 +228,90 @@ public class GameScreen extends AbstractScreen{
 	
 	private void GameTime() {
 		
-		startTime = System.currentTimeMillis();
-		
-		Timer.schedule(new Task(){
+		if(game.server){
+			
+			startTime = System.currentTimeMillis();
+			
+			Timer.schedule(new Task(){
 
-			@Override
-			public void run() {
-				
-				elapsedTime = (int)( ( System.currentTimeMillis() - startTime ) /1000 );
-				
-				lRoundTime.setText(Integer.toString( 3 - elapsedTime ) );
-				
-				if(elapsedTime >= 3){
+				@Override
+				public void run() {
 					
-					startTime = System.currentTimeMillis();
+					elapsedTime = (int)( ( System.currentTimeMillis() - startTime ) /1000 );
 					
-					randomObjectsControler.startRandom();
+					lRoundTime.setText(Integer.toString( 3 - elapsedTime ) );
 					
-					Timer.schedule(new Task(){
+					sendGameTime();
+					
+					if(elapsedTime >= 3){
+						
+						startTime = System.currentTimeMillis();
+						
+						randomObjectsControler.startRandom();
+						
+						Timer.schedule(new Task(){
 
-						@Override
-						public void run() {
+							@Override
+							public void run() {
 
-							if(!game.start)
-								this.cancel();
-							
-							elapsedTime = (int)( (System.currentTimeMillis() - startTime)/1000 );
-							
-							String s = Integer.toString( ( game.ROUND_TIME * 60 - elapsedTime )%60 );
-							
-							if( ( (game.ROUND_TIME * 60 - elapsedTime ) % 60 ) < 10){
-
-								s = "0" + s;
-							}
-							
-							lRoundTime.setText( Integer.toString( ( game.ROUND_TIME * 60 - elapsedTime )/60 ) + ":" + s );
-									
-							lRoundTime.setPosition(Berek.GAME_WIDTH/2 - lRoundTime.getPrefWidth()/2, Berek.GAME_HEIGHT - 100);
-							
-							if(elapsedTime >= game.ROUND_TIME * 60){
+								if(!game.start)
+									this.cancel();
 								
-								game.BreakGame();
-								this.cancel();
-							}
-						}						
-					}, 0, 0.1f);
-					
-					roundStart = true;
-					this.cancel();
+								elapsedTime = (int)( (System.currentTimeMillis() - startTime)/1000 );
+								
+								String s = Integer.toString( ( game.ROUND_TIME * 60 - elapsedTime )%60 );
+								
+								if( ( (game.ROUND_TIME * 60 - elapsedTime ) % 60 ) < 10){
+
+									s = "0" + s;
+								}
+								
+								lRoundTime.setText( Integer.toString( ( game.ROUND_TIME * 60 - elapsedTime )/60 ) + ":" + s );
+										
+								lRoundTime.setPosition(Berek.GAME_WIDTH/2 - lRoundTime.getPrefWidth()/2, Berek.GAME_HEIGHT - 100);
+								
+								sendGameTime();
+								
+								if(elapsedTime >= game.ROUND_TIME * 60){
+									
+									game.BreakGame();
+									this.cancel();
+								}
+							}						
+						}, 0, 0.1f);
+						
+						roundStart = true;
+						this.cancel();
+					}
 				}
-			}			
-		}, 0, 0.1f);		
+
+						
+			}, 0, 0.1f);		
+		}
+		else{
+			
+			
+			
+		}
+		
+	}
+	
+	private void sendGameTime() {
+		
+		JSONObject data = new JSONObject();
+		
+		try {
+			
+			data.put("time", lRoundTime.getText());
+		
+		
+		} catch (JSONException e) {
+			
+			
+			e.printStackTrace();
+		}  
+	 
+		
 	}
 
 	private void initLRoundTime() {

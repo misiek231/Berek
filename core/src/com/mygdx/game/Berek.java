@@ -58,6 +58,8 @@ public class Berek extends Game {
 	
 	public boolean wyzwanie;
 	
+	public String curentRoundTime;
+	
 	public Berek(){		
 		
 		super();		

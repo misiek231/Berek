@@ -279,6 +279,8 @@ public class NotificationListener implements NotifyListener {
 				
 				float knobX = (float)data.getDouble("knobX");  
 				float knobY = (float)data.getDouble("knobY");  
+				
+				game.curentRoundTime = data.getString("time");
 		    
 				//System.out.println(knobX);
 				//System.out.println(knobY);
