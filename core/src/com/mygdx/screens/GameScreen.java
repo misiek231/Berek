@@ -135,9 +135,10 @@ public class GameScreen extends AbstractScreen{
 
 	private void calculatePosition() {
 		 
-		if(roundStart){
 			
-			if(game.server){	    
+		if(game.server){
+				
+			if(roundStart){
 				
 				game.player1.setX( game.player1.getX() + game.tuchpad.getKnobPercentX() * game.player1.playerSpeed);
 		    	game.player1.setY( game.player1.getY() + game.tuchpad.getKnobPercentY() * game.player1.playerSpeed);
