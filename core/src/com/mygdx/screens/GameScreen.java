@@ -263,6 +263,8 @@ public class GameScreen extends AbstractScreen{
 								if(!game.start)
 									this.cancel();
 								
+								System.out.println("startTime" + game.startTime);
+								
 								elapsedTime = (int)( (System.currentTimeMillis() - game.startTime)/1000 );
 							
 								String s = Integer.toString( ( game.ROUND_TIME * 60 - elapsedTime )%60 );
