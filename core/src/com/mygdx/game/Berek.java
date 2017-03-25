@@ -65,6 +65,8 @@ public class Berek extends Game {
 	
 	public Music music;
 	
+	public Object randomObjectsControler;
+	
 	public Berek(){		
 		
 		super();		

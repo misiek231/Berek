@@ -1,7 +1,9 @@
 package com.mygdx.connection;
 
 import java.util.HashMap;
+import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.Berek;
+import com.mygdx.random.objects.RandomObject;
 import com.shephertz.app42.gaming.multiplayer.client.WarpClient;
 import com.shephertz.app42.gaming.multiplayer.client.events.ChatEvent;
 import com.shephertz.app42.gaming.multiplayer.client.events.LobbyData;
@@ -236,14 +239,32 @@ public class NotificationListener implements NotifyListener {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdatePeersReceived(UpdateEvent arg0) {
 	//	System.out.println("onUpdatePeersReceived " + arg0.getUpdate().toString() + arg0.isUDP() );
 		
+		JSONObject data = null;
+		try {
+			data = new JSONObject(new String( arg0.getUpdate() ) );
+		} catch (JSONException e1) {
+			
+			e1.printStackTrace();
+		} 
 		
 		if(!game.server){
+			
+			try{
+				game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
+				System.out.println("Objekty odebrane");
+				
+			} catch (Exception e) {  
+				
+				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@OBJEKTÓW");
+			} 
+			
 			try {  
-				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+				 
 				float x1 = (float)data.getDouble("x1");  
 				float y1 = (float)data.getDouble("y1");  
 		    
@@ -267,6 +288,8 @@ public class NotificationListener implements NotifyListener {
 				game.player2.isBerek = !game.player1.isBerek;
 				
 				game.curentRoundTime = (String)data.get("time");
+				
+				
 		    
 		
 			} catch (Exception e) {  
@@ -277,7 +300,7 @@ public class NotificationListener implements NotifyListener {
 			
 			try {  
 				
-				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+				
 				
 				float knobX = (float)data.getDouble("knobX");  
 				float knobY = (float)data.getDouble("knobY");  

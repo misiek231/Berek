@@ -29,7 +29,7 @@ public class GameScreen extends AbstractScreen{
 	
 	Label player2Nick;
 	
-	RandomObjectsControler randomObjectsControler;
+	
 	
 	private boolean roundStart = false;
 	
@@ -45,7 +45,7 @@ public class GameScreen extends AbstractScreen{
 	@Override
 	public void show() {
 
-		randomObjectsControler = new RandomObjectsControler(game, batch);
+		game.randomObjectsControler = new RandomObjectsControler(game, batch);
 						
 		initPlayer1Nick();
 
@@ -128,7 +128,7 @@ public class GameScreen extends AbstractScreen{
 		batch.begin();	
 		
 			if(roundStart)
-				randomObjectsControler.drowObjects();
+				game.randomObjectsControler.drowObjects();
 		 
 		 	batch.draw(game.player1.getTexture(), game.player1.getX(), game.player1.getY(), game.player1.width, game.player1.height);
 		 	batch.draw(game.player2.getTexture(), game.player2.getX(), game.player2.getY(), game.player2.width, game.player2.height);
@@ -253,7 +253,7 @@ public class GameScreen extends AbstractScreen{
 						
 						game.startTime = System.currentTimeMillis();
 						
-						randomObjectsControler.startRandom();
+						game.randomObjectsControler.startRandom();
 						
 						Timer.schedule(new Task(){
 

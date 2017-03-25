@@ -3,6 +3,9 @@ package com.mygdx.random.objects;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Timer;
@@ -18,7 +21,7 @@ public class RandomObjectsControler {
 	
 	int randomObjectNumber = 0;
 	
-	List<RandomObject> randomObjects;
+	public List<RandomObject> randomObjects;
 	
 	public RandomObjectsControler(Berek game, SpriteBatch batch) {
 		
@@ -71,6 +74,7 @@ public class RandomObjectsControler {
 							break;
 					}	
 					
+					sendObjectsData();
 					
 				}	
 			}
@@ -110,4 +114,23 @@ public class RandomObjectsControler {
 			randomObjects.remove(removeObjectIndex);
 		}
 	}	
+	
+	public void sendObjectsData(){
+		
+		
+		JSONObject data = new JSONObject(); 
+		
+		try {
+			data.put("objects", randomObjects);
+			
+			System.out.println("objekty wys³ane");
+		} catch (JSONException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
 }
