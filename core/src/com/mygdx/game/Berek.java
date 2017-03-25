@@ -66,7 +66,7 @@ public class Berek extends Game {
 	@Override
 	public void create () {
 		
-		init();		
+	//	init();		
 	}
 	
 	@Override
