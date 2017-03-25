@@ -11,24 +11,26 @@ public class TimeBoost extends RandomObject {
 	private final float workTime = 10f;
 	private final float liveTime = 10f;
 	
-	public TimeBoost(Berek game) {
+	public TimeBoost(Berek game) 
+	{
 		super(game);
 		
 		texture = new Texture("randomObjects/TimeBoost.png");
 		
-		Timer.schedule(new Task() {
-			
+		Timer.schedule(new Task() 
+		{			
 			@Override
-			public void run() {
-				exist = false;
-				
-			}
+			public void run() 
+			{
+				exist = false;				
+			}		
 		}, liveTime);
 	}		
 
 	@Override
-	public void addEffectsToPlayers(Player playerTouchet, Player playerNotTouchet) {
-	
+	public void addEffectsToPlayers(Player playerTouchet, Player playerNotTouchet) 
+	{
+		game.startTime += 10;
 	}
 
 }
