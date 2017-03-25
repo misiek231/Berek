@@ -252,10 +252,10 @@ public class NotificationListener implements NotifyListener {
 				
 				boolean b1 = (boolean)data.getBoolean("b1");
 		    
-			//	System.out.println(x1);
-			//	System.out.println(y1);
-			//	System.out.println(x2);
-			//	System.out.println(y2);
+				System.out.println(x1);
+				System.out.println(y1);
+				System.out.println(x2);
+				System.out.println(y2);
 		    //
 				game.x1 = x1;
 				game.y1 = y1;
@@ -266,7 +266,7 @@ public class NotificationListener implements NotifyListener {
 				game.player1.isBerek = b1;
 				game.player2.isBerek = !game.player1.isBerek;
 				
-				game.curentRoundTime = data.getString("time");
+				game.curentRoundTime = (String)data.get("time");
 		    
 		
 			} catch (Exception e) {  

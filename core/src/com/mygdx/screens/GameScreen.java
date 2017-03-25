@@ -74,6 +74,9 @@ public class GameScreen extends AbstractScreen{
 		
 		calculateNamePosition();	
 		
+	
+			
+		
 		if(!game.server){
 			
 			lRoundTime.setText(game.curentRoundTime);
@@ -203,6 +206,8 @@ public class GameScreen extends AbstractScreen{
 				data.put("x2", game.player2.getX());  
 				data.put("y2", game.player2.getY());  
 				data.put("b1", game.player1.isBerek); 
+				data.put("time", lRoundTime.getText());
+				
 				System.out.println("Server wysy³a");
 				WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());			
 				
@@ -242,7 +247,7 @@ public class GameScreen extends AbstractScreen{
 					
 					lRoundTime.setText(Integer.toString( 3 - elapsedTime ) );
 					
-					sendGameTime();
+					
 					
 					if(elapsedTime >= 3){
 						
@@ -271,7 +276,7 @@ public class GameScreen extends AbstractScreen{
 										
 								lRoundTime.setPosition(Berek.GAME_WIDTH/2 - lRoundTime.getPrefWidth()/2, Berek.GAME_HEIGHT - 100);
 								
-								sendGameTime();
+							
 								
 								if(elapsedTime >= game.ROUND_TIME * 60){
 									
@@ -297,23 +302,7 @@ public class GameScreen extends AbstractScreen{
 		
 	}
 	
-	private void sendGameTime() {
-		
-		JSONObject data = new JSONObject();
-		
-		try {
-			
-			data.put("time", lRoundTime.getText());
-		
-		
-		} catch (JSONException e) {
-			
-			
-			e.printStackTrace();
-		}  
-	 
-		
-	}
+
 
 	private void initLRoundTime() {
 		lRoundTime = new Label("",game.skin,"big");
