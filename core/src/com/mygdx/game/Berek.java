@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
@@ -62,6 +63,8 @@ public class Berek extends Game {
 	
 	public long startTime;
 	
+	public Music music;
+	
 	public Berek(){		
 		
 		super();		
@@ -71,6 +74,7 @@ public class Berek extends Game {
 	public void create () {
 		
 		init();		
+		
 	}
 	
 	@Override
@@ -96,6 +100,10 @@ public class Berek extends Game {
 		msgskin = new Skin(Gdx.files.internal("clean/skin/clean-crispy-ui.json"));	
 		
 		skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));		
+		
+		music = Gdx.audio.newMusic(Gdx.files.internal("music/backgroundMenuMusic.mp3"));
+		music.setLooping(true);;
+		music.play();
 		
 		tuchpad = new AnalogStick();
 			
