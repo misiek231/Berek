@@ -137,7 +137,7 @@ public class GameScreen extends AbstractScreen{
 		 
 			
 		if(game.server){
-				
+			
 			if(roundStart){
 				
 				game.player1.setX( game.player1.getX() + game.tuchpad.getKnobPercentX() * game.player1.playerSpeed);
@@ -178,16 +178,16 @@ public class GameScreen extends AbstractScreen{
 		  		
 		 	    	game.player2.x += -player1xTorque;
 		 	    	game.player2.y += -player1yTorque; 
-		 	    
-			    			   
-			}else{	    	
+				
+			}	
+			
+		}else{	    	
 			    	
-			    game.player1.setX( game.x1);
-			    game.player1.setY( game.y1);
+			game.player1.setX( game.x1);
+			game.player1.setY( game.y1);
 			    	
-			    game.player2.setX( game.x2);
-			    game.player2.setY( game.y2);		    	
-			}
+			game.player2.setX( game.x2);
+			game.player2.setY( game.y2);		    	
 		}
 	}
 
