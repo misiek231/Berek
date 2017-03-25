@@ -76,7 +76,7 @@ public class NotificationListener implements NotifyListener {
 		    
 		
 			} catch (Exception e) {  
-				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
+				System.out.println("BÂ³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
 			}  
 		}
 		else{
@@ -96,7 +96,7 @@ public class NotificationListener implements NotifyListener {
 		    
 		
 			} catch (Exception e) {  
-				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
+				System.out.println("BÂ³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
 			}  			
 		}
 	}
@@ -140,7 +140,7 @@ public class NotificationListener implements NotifyListener {
 		
 		Dialog msgbox = new Dialog("Zaproszenie", game.msgskin);
 		
-		msgbox.text(new Label("Gracz " + arg0 + " zaprosi³ ciê do gry. Czy chcesz z nim zagraæ? ", game.msgskin));
+		msgbox.text(new Label("Gracz " + arg0 + " zaprosiÂ³ ciÃª do gry. Czy chcesz z nim zagraÃ¦? ", game.msgskin));
 		
 		msgbox.scaleBy(0.5f);
 
@@ -204,7 +204,7 @@ public class NotificationListener implements NotifyListener {
 				game.y2 = y2;
 	
 			} catch (Exception e) {  
-				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
+				System.out.println("BÂ³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
 			}  
 		}
 		else{
@@ -223,7 +223,7 @@ public class NotificationListener implements NotifyListener {
 				game.Knoby2 = knobY;
 		    		
 			} catch (Exception e) {  
-				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
+				System.out.println("BÂ³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
 			} 			
 		}
 	}
@@ -242,84 +242,56 @@ public class NotificationListener implements NotifyListener {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdatePeersReceived(UpdateEvent arg0) {
-	//	System.out.println("onUpdatePeersReceived " + arg0.getUpdate().toString() + arg0.isUDP() );
-		
-		JSONObject data = null;
-		try {
-			data = new JSONObject(new String( arg0.getUpdate() ) );
-		} catch (JSONException e1) {
-			
-			e1.printStackTrace();
-		} 
-		
-		if(!game.server){
-			
-			try{
-				game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
-				System.out.println("Objekty odebrane");
-				
-			} catch (Exception e) {  
-				
-				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@OBJEKTÓW");
-			} 
-			
-			try {  
-				 
-				float x1 = (float)data.getDouble("x1");  
-				float y1 = (float)data.getDouble("y1");  
-		    
-				float x2 = (float)data.getDouble("x2");  
-				float y2 = (float)data.getDouble("y2");
-				
-				boolean b1 = (boolean)data.getBoolean("b1");
-		    
-				System.out.println(x1);
-				System.out.println(y1);
-				System.out.println(x2);
-				System.out.println(y2);
-		    //
-				game.x1 = x1;
-				game.y1 = y1;
-		    
-				game.x2 = x2;
-				game.y2 = y2;
-				
-				game.player1.isBerek = b1;
-				game.player2.isBerek = !game.player1.isBerek;
-				
-				game.curentRoundTime = (String)data.get("time");
-				
-				
-		    
-		
-			} catch (Exception e) {  
-				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
-			}  
-		}
-		else{
-			
-			try {  
-				
-				
-				
-				float knobX = (float)data.getDouble("knobX");  
-				float knobY = (float)data.getDouble("knobY");  
-				
-				
-		    
-				//System.out.println(knobX);
-				//System.out.println(knobY);
-			
-				game.Knobx2 = knobX;
-				game.Knoby2 = knobY;
-		    
-				
-				
-		
-			} catch (Exception e) {  
-				//System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
-			}  			
-		}
+		  if(!game.server){
+	            try {  
+	                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+	                float x1 = (float)data.getDouble("x1");  
+	                float y1 = (float)data.getDouble("y1");  
+	           
+	                float x2 = (float)data.getDouble("x2");  
+	                float y2 = (float)data.getDouble("y2");
+	               
+	                boolean b1 = (boolean)data.getBoolean("b1");
+	           
+	            //  System.out.println(x1);
+	            //  System.out.println(y1);
+	            //  System.out.println(x2);
+	                System.out.println(y2);
+	            //
+	                game.x1 = x1;
+	                game.y1 = y1;
+	           
+	                game.x2 = x2;
+	                game.y2 = y2;
+	               
+	                game.player1.isBerek = b1;
+	                game.player2.isBerek = !game.player1.isBerek;
+	           
+	       
+	            } catch (Exception e) {  
+	                //System.out.println("BÅ‚AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
+	            }  
+	        }
+	        else{
+	           
+	            try {  
+	               
+	                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+	               
+	                float knobX = (float)data.getDouble("knobX");  
+	                float knobY = (float)data.getDouble("knobY");  
+	           
+	                //System.out.println(knobX);
+	                //System.out.println(knobY);
+	           
+	                game.Knobx2 = knobX;
+	                game.Knoby2 = knobY;
+	           
+	       
+	            } catch (Exception e) {  
+	                //System.out.println("BÅ‚AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
+	            }
+	        }
 	}
 
 	@Override
