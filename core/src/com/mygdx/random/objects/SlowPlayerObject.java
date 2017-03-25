@@ -1,19 +1,9 @@
 package com.mygdx.random.objects;
 
-import com.mygdx.game.Berek;
-import com.mygdx.players.Player;
+public class SlowPlayerObject {
 
-public class SlowPlayerObject extends RandomObject {
-
-	public SlowPlayerObject(Berek game) {
-		super(game);
+	public SlowPlayerObject() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void addEffectsToPlayers(Player player) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
