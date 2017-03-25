@@ -37,7 +37,7 @@ public class RandomObjectsControler {
 			
 				if(randomObjectNumber < 3){
 					
-					switch (MathUtils.random(1,2)) {
+					switch (MathUtils.random(1,3)) {
 					
 						case 1:
 						
@@ -49,6 +49,13 @@ public class RandomObjectsControler {
 						case 2:
 							
 							randomObjects.add(new SlowPlayerObject(game)); 
+							System.out.println("object added");
+						
+							break;
+							
+						case 3:
+							
+							randomObjects.add(new EscapeBoost(game)); 
 							System.out.println("object added");
 						
 							break;
