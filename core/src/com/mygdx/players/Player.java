@@ -55,6 +55,7 @@ public class Player extends Rectangle{
 			if(x > Berek.GAME_WIDTH - 50){
 				
 				xTorque = -50/recoilPower;	
+				
 			}
 			
 			if(y < 0){

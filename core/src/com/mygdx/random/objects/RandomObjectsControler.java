@@ -3,6 +3,7 @@ package com.mygdx.random.objects;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,6 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.game.Berek;
+import com.shephertz.app42.gaming.multiplayer.client.WarpClient;
 
 public class RandomObjectsControler {
 
@@ -125,11 +127,20 @@ public class RandomObjectsControler {
 			
 			System.out.println("objekty wys³ane");
 		} catch (JSONException e) {
-			
+			System.out.println("objekty nie wys³ane");
 			e.printStackTrace();
 		}
 		
+		try {
+			
+			WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+	
 		
 	}
 	

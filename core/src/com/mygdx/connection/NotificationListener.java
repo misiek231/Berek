@@ -255,7 +255,8 @@ public class NotificationListener implements NotifyListener {
 		if(!game.server){
 			
 			try{
-				game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
+			//	game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
+				
 				System.out.println("Objekty odebrane");
 				
 			} catch (Exception e) {  

@@ -208,8 +208,9 @@ public class GameScreen extends AbstractScreen{
 				data.put("b1", game.player1.isBerek); 
 				data.put("time", lRoundTime.getText());
 				
+				
 				System.out.println("Server wysy³a");
-				WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());			
+							
 				
 			} catch (Exception e) {  
 				System.out.println("B£AD@@@@@@@@ WYSY£U");
