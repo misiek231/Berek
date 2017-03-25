@@ -60,7 +60,7 @@ public class RandomObjectsControler {
 					
 				}	
 			}
-		}, 1, 1);	
+		}, 1, 10);	
 		
 	}	
 	
