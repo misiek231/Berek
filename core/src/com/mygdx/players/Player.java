@@ -12,6 +12,7 @@ public class Player extends Rectangle{
 	private static final float recoilSpeed = 1.1f;
 	private static final float recoilPower = 3;
 	public float playerSpeed = 7;
+	public boolean checkReflection = true;
 
 	
 	private Texture berekTexture;
@@ -44,42 +45,45 @@ public class Player extends Rectangle{
 	
 	public void checkReflection() {		
 		
-		if(x < 0){
+		if(checkReflection){
 			
-			xTorque = 50/recoilPower;	
-		}
-		
-		if(x > Berek.GAME_WIDTH - 50){
+			if(x < 0){
+				
+				xTorque = 50/recoilPower;	
+			}
 			
-			xTorque = -50/recoilPower;	
-		}
-		
-		if(y < 0){
+			if(x > Berek.GAME_WIDTH - 50){
+				
+				xTorque = -50/recoilPower;	
+			}
 			
-			yTorque = 50/recoilPower;	
-		}
-		
-		if(y > Berek.GAME_HEIGHT - 50){
+			if(y < 0){
+				
+				yTorque = 50/recoilPower;	
+			}
 			
-			yTorque = -50/recoilPower;	
-		}
-		
-		
-		
-    	if(xTorque > 1 || xTorque < -1)	    
- 	    	xTorque = xTorque/recoilSpeed;	    
- 	    else
- 	    	xTorque=0;
- 	    
- 	    if(yTorque > 1 || yTorque < -1)		    
- 	    	yTorque = yTorque/recoilSpeed;	    
- 	    else
- 	    	yTorque=0;
-    	
- 	
- 	    
- 	    	x += xTorque;
- 	    	y += yTorque;
+			if(y > Berek.GAME_HEIGHT - 50){
+				
+				yTorque = -50/recoilPower;	
+			}
+			
+			
+			
+	    	if(xTorque > 1 || xTorque < -1)	    
+	 	    	xTorque = xTorque/recoilSpeed;	    
+	 	    else
+	 	    	xTorque=0;
+	 	    
+	 	    if(yTorque > 1 || yTorque < -1)		    
+	 	    	yTorque = yTorque/recoilSpeed;	    
+	 	    else
+	 	    	yTorque=0;
+	    	
+	 	
+	 	    
+	 	    	x += xTorque;
+	 	    	y += yTorque;
 
+		}
 	}
 }   

@@ -273,6 +273,9 @@ public class NotificationListener implements NotifyListener {
 		}
 		else{
 			
+			
+			
+			
 			try {  
 				
 				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
@@ -280,7 +283,7 @@ public class NotificationListener implements NotifyListener {
 				float knobX = (float)data.getDouble("knobX");  
 				float knobY = (float)data.getDouble("knobY");  
 				
-				game.curentRoundTime = data.getString("time");
+			//	
 		    
 				//System.out.println(knobX);
 				//System.out.println(knobY);
@@ -289,6 +292,8 @@ public class NotificationListener implements NotifyListener {
 				game.Knoby2 = knobY;
 		    
 		
+				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+				
 			} catch (Exception e) {  
 				//System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
 			}  			
