@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.mygdx.connection.WarpController;
 import com.mygdx.controler.AnalogStick;
 import com.mygdx.players.Player;
+import com.mygdx.random.objects.RandomObjectsControler;
 import com.mygdx.screens.GameOverScreen;
 import com.mygdx.screens.NameScreen;
 import com.shephertz.app42.gaming.multiplayer.client.WarpClient;
@@ -65,7 +66,7 @@ public class Berek extends Game {
 	
 	public Music music;
 	
-	public Object randomObjectsControler;
+	public RandomObjectsControler randomObjectsControler;
 	
 	public Berek(){		
 		
