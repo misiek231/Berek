@@ -1,5 +1,7 @@
 package com.mygdx.players;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.game.Berek;
@@ -25,12 +27,16 @@ public class Player extends Rectangle{
 	float xTorque=0;
 	float yTorque=0;
 	
+	private Sound soundCollision;
+	
 	public Player(boolean isBerek){
 		
 		this.isBerek = isBerek;
 		
 		berekTexture = new Texture("berek_circle.png");
 		noBerekTexture = new Texture("no_berek_circle.png");
+		
+		soundCollision = Gdx.audio.newSound(Gdx.files.internal("music/soundCollision.mp3"));
 		
 		setSize(50, 50);
 	}
@@ -50,21 +56,25 @@ public class Player extends Rectangle{
 			if(x < 0){
 				
 				xTorque = 50/recoilPower;	
+				soundCollision.play();
 			}
 			
 			if(x > Berek.GAME_WIDTH - 50){
 				
 				xTorque = -50/recoilPower;	
+				soundCollision.play();
 			}
 			
 			if(y < 0){
 				
 				yTorque = 50/recoilPower;	
+				soundCollision.play();
 			}
 			
 			if(y > Berek.GAME_HEIGHT - 50){
 				
 				yTorque = -50/recoilPower;	
+				soundCollision.play();
 			}
 			
 			
