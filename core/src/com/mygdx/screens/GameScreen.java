@@ -19,7 +19,7 @@ public class GameScreen extends AbstractScreen{
 	private static final float recoilSpeed = 1.1f;
 	
 	
-	long startTime;
+	
 	
 	int elapsedTime;
 	
@@ -236,14 +236,14 @@ public class GameScreen extends AbstractScreen{
 		
 		if(game.server){
 			
-			startTime = System.currentTimeMillis();
+			game.startTime = System.currentTimeMillis();
 			
 			Timer.schedule(new Task(){
 
 				@Override
 				public void run() {
 					
-					elapsedTime = (int)( ( System.currentTimeMillis() - startTime ) /1000 );
+					elapsedTime = (int)( ( System.currentTimeMillis() - game.startTime ) /1000 );
 					
 					lRoundTime.setText(Integer.toString( 3 - elapsedTime ) );
 					
@@ -251,7 +251,7 @@ public class GameScreen extends AbstractScreen{
 					
 					if(elapsedTime >= 3){
 						
-						startTime = System.currentTimeMillis();
+						game.startTime = System.currentTimeMillis();
 						
 						randomObjectsControler.startRandom();
 						
@@ -263,8 +263,8 @@ public class GameScreen extends AbstractScreen{
 								if(!game.start)
 									this.cancel();
 								
-								elapsedTime = (int)( (System.currentTimeMillis() - startTime)/1000 );
-								
+								elapsedTime = (int)( (System.currentTimeMillis() - game.startTime)/1000 );
+							
 								String s = Integer.toString( ( game.ROUND_TIME * 60 - elapsedTime )%60 );
 								
 								if( ( (game.ROUND_TIME * 60 - elapsedTime ) % 60 ) < 10){
