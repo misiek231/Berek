@@ -27,7 +27,7 @@ public class SpeedBoster extends RandomObject {
 			
 			@Override
 			public void run() {
-				//exist = false;
+				exist = false;
 				
 			}
 		}, liveTime);

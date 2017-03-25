@@ -255,7 +255,7 @@ public class NotificationListener implements NotifyListener {
 			//	System.out.println(x1);
 			//	System.out.println(y1);
 			//	System.out.println(x2);
-				System.out.println(y2);
+			//	System.out.println(y2);
 		    //
 				game.x1 = x1;
 				game.y1 = y1;
@@ -265,16 +265,15 @@ public class NotificationListener implements NotifyListener {
 				
 				game.player1.isBerek = b1;
 				game.player2.isBerek = !game.player1.isBerek;
+				
+				game.curentRoundTime = data.getString("time");
 		    
 		
 			} catch (Exception e) {  
-				//System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
+				System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
 			}  
 		}
 		else{
-			
-			
-			
 			
 			try {  
 				
@@ -283,7 +282,7 @@ public class NotificationListener implements NotifyListener {
 				float knobX = (float)data.getDouble("knobX");  
 				float knobY = (float)data.getDouble("knobY");  
 				
-			//	
+				
 		    
 				//System.out.println(knobX);
 				//System.out.println(knobY);
@@ -291,9 +290,9 @@ public class NotificationListener implements NotifyListener {
 				game.Knobx2 = knobX;
 				game.Knoby2 = knobY;
 		    
-		
-				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
 				
+				
+		
 			} catch (Exception e) {  
 				//System.out.println("B³AD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
 			}  			
