@@ -35,15 +35,15 @@ public class SpeedBoster extends RandomObject {
 
 
 	@Override
-	public void addEffectsToPlayers(final Player player) {
+	public void addEffectsToPlayers(final Player playerTouchet, Player playerNotTouchet) {
 		
-		player.playerSpeed += addSpeed;
+		playerTouchet.playerSpeed += addSpeed;
 		
 		Timer.schedule(new Task() {
 			
 			@Override
 			public void run() {
-				player.playerSpeed -= addSpeed;
+				playerTouchet.playerSpeed -= addSpeed;
 				
 			}
 		}, workTime);

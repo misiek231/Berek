@@ -11,7 +11,7 @@ public class SlowPlayerObject extends RandomObject {
 	}
 
 	@Override
-	public void addEffectsToPlayers(Player player) {
+	public void addEffectsToPlayers(Player playerTouchet, Player playerNotTouchet) {
 		// TODO Auto-generated method stub
 
 	}

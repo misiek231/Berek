@@ -65,13 +65,13 @@ public class RandomObjectsControler {
 			
 			if(game.player1.overlaps(randomObject)){
 				
-				randomObject.addEffectsToPlayers(game.player1);	
+				randomObject.addEffectsToPlayers(game.player1 , game.player2);	
 				randomObject.exist = false;
 			}
 		
 			if(game.player2.overlaps(randomObject)){
 				
-				randomObject.addEffectsToPlayers(game.player2);		
+				randomObject.addEffectsToPlayers(game.player2, game.player1);		
 				randomObject.exist = false;
 			}
 			

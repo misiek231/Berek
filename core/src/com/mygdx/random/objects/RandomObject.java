@@ -38,6 +38,6 @@ public abstract class RandomObject extends Rectangle {
 		return texture;
 	}
 	
-	public abstract void addEffectsToPlayers( Player player);	
+	public abstract void addEffectsToPlayers( Player playerTouchet, Player playerNotTouchet);	
 	
 }
