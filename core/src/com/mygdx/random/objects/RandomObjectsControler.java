@@ -48,7 +48,7 @@ public class RandomObjectsControler {
 						
 							SpeedBoster speedBooster = new SpeedBoster(game);
 							
-							sendObjectsData(speedBooster, 1);
+							//sendObjectsData(speedBooster, 1);
 							
 							randomObjects.add(speedBooster); 
 							
@@ -60,7 +60,7 @@ public class RandomObjectsControler {
 							
 							SlowPlayerObject slowPlayerObject = new SlowPlayerObject(game);
 							
-							sendObjectsData(slowPlayerObject, 2);
+							//sendObjectsData(slowPlayerObject, 2);
 							
 							randomObjects.add(slowPlayerObject); 
 							System.out.println("object added");
@@ -71,7 +71,7 @@ public class RandomObjectsControler {
 							
 							EscapeBoost escapeBoost = new EscapeBoost(game);
 							
-							sendObjectsData(escapeBoost, 3);
+							//sendObjectsData(escapeBoost, 3);
 							
 							randomObjects.add(escapeBoost); 
 							System.out.println("object added");
@@ -82,7 +82,7 @@ public class RandomObjectsControler {
 							
 							TimeBoost timeBoost = new TimeBoost(game);
 							
-							sendObjectsData(timeBoost, 4);
+							//sendObjectsData(timeBoost, 4);
 							
 							randomObjects.add( timeBoost); 
 							System.out.println("object added");
@@ -135,89 +135,4 @@ public class RandomObjectsControler {
 			randomObjects.remove(removeObjectIndex);
 		}
 	}	
-	
-	public void sendObjectsData(RandomObject obj, int type){
-		
-		
-		JSONObject data = new JSONObject(); 
-		
-		
-		
-		try {
-			data.put("objx", obj.x);
-			data.put("objy", obj.x);
-			data.put("objtyp", type);
-			
-<<<<<<< HEAD
-			System.out.println("objekty wys³ane");
-		} catch (JSONException e) {
-			System.out.println("objekty nie wys³ane");
-			e.printStackTrace();
-		}
-		
-		try {
-			
-			WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-=======
-			WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());
-			
-			System.out.println("obj Wys³any");
-			
-		}catch (Exception e) {
-			System.out.println("b³¹d wysy³u");
-		}	
-	}
-	
-	
-	
-	public void AddObject(float x, float y, int type){
-		
-		System.out.println("AddObject function ");
-		
-		switch (type) {
-		
-		case 1:
-					
-			randomObjects.add(new SpeedBoster(game, x, y)); 
-			
-			System.out.println("object added");
-		
-			break;
-			
-		case 2:
-			
-			randomObjects.add(new SlowPlayerObject(game, x, y)); 
-			System.out.println("object added");
-		
-			break;
-			
-		case 3:
-			
-			randomObjects.add(new EscapeBoost(game, x, y)); 
-			System.out.println("object added");
-		
-			break;
-			
-		case 4:
-			
-
-			
-			randomObjects.add(new TimeBoost(game, x, y)); 
-			System.out.println("object added");
-		
-			break;
-		
-		default:
-			break;
-	}	
->>>>>>> new
-		
-	
-		
-	}
 }

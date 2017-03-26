@@ -239,158 +239,59 @@ public class NotificationListener implements NotifyListener {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdatePeersReceived(UpdateEvent arg0) {
 		
-<<<<<<< HEAD
-/*		JSONObject data = null;
-		try {
-			data = new JSONObject(new String( arg0.getUpdate() ) );
-		} catch (JSONException e1) {
-			
-			e1.printStackTrace();
-		} */
-		
 		if(!game.server){
-			
-<<<<<<< HEAD
-			try{
-=======
-	/*		try{
->>>>>>> f533af54c851c39b4efc715a2b99de92a92eb8ec
-				game.randomObjectsControler.randomObjects = (List<RandomObject>) data.getJSONObject("objects");
-				
-				System.out.println("Objekty odebrane");
-				
-			} catch (Exception e) {  
-				
-				System.out.println("B�AD@@@@@@@@ ODCZYTU@@@@@@@@OBJEKT�W");
-			} */
-			
-			try {  
-				
-				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );
-				 
-				float x1 = (float)data.getDouble("x1");  
-				float y1 = (float)data.getDouble("y1");  
-		    
-				float x2 = (float)data.getDouble("x2");  
-				float y2 = (float)data.getDouble("y2");
-				
-				boolean b1 = (boolean)data.getBoolean("b1");
-		    
-				System.out.println(x1);
-				System.out.println(y1);
-				System.out.println(x2);
-				System.out.println(y2);
-		    //
-				game.x1 = x1;
-				game.y1 = y1;
-		    
-				game.x2 = x2;
-				game.y2 = y2;
-				
-				game.player1.isBerek = b1;
-				game.player2.isBerek = !game.player1.isBerek;
-				
-				game.curentRoundTime = (String)data.get("time");
-				
-				
-		    
-		
-			} catch (Exception e) {  
-				System.out.println("B�AD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
-			}  
-		}
-		else{
-			
-			try {  
-				
-				JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );
-				
-				float knobX = (float)data.getDouble("knobX");  
-				float knobY = (float)data.getDouble("knobY");  
-				
-				
-		    
-				//System.out.println(knobX);
-				//System.out.println(knobY);
-=======
-		System.out.println("onUpdatePeersReceived");
-		
-		if(!game.server){
-			
-	/*		try {  
-			
-			JSONObject data = new JSONObject(new String( arg0.getUpdate() ) ); 
-			
-			//game.randomObjectsControler.AddObject( (float)data.getDouble("objx") , (float)data.getDouble("objy") , (int)data.getInt("objtyp")); 
->>>>>>> new
-			
-			System.out.println("odbiur");
-			
-			System.out.println((float)data.getDouble("objx"));
-			
-			System.out.println((float)data.getDouble("objy") );
-			
-			System.out.println((int)data.getInt("objtyp"));
-			
-			}catch (Exception e) {
-				System.out.println("błąd odbioru");
-			}*/
-			
-	            try {  
-	                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
-	                float x1 = (float)data.getDouble("x1");  
-	                float y1 = (float)data.getDouble("y1");  
-	           
-	                float x2 = (float)data.getDouble("x2");  
-	                float y2 = (float)data.getDouble("y2");
-	               
-	                boolean b1 = (boolean)data.getBoolean("b1");
-	           
-	            //  System.out.println(x1);
-	            //  System.out.println(y1);
-	            //  System.out.println(x2);
-	            //   System.out.println(y2);
-	            
-	                game.x1 = x1;
-	                game.y1 = y1;
-	           
-	                game.x2 = x2;
-	                game.y2 = y2;
-	               
-	                game.player1.isBerek = b1;
-	                game.player2.isBerek = !game.player1.isBerek;
-	                
-	                game.curentRoundTime = (String)data.get("time");
-	           
-	       
-	            } catch (Exception e) {  
-	                //System.out.println("BłAD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
-	            }  
-	        }
-	        else{
-	           
-	            try {  
-	               
-	                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
-	               
-	                float knobX = (float)data.getDouble("knobX");  
-	                float knobY = (float)data.getDouble("knobY");  
-	           
-	                //System.out.println(knobX);
-	                //System.out.println(knobY);
-	           
-	                game.Knobx2 = knobX;
-	                game.Knoby2 = knobY;
-	           
-	       
-	            } catch (Exception e) {  
-	                //System.out.println("BłAD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
-	            }
-	        }
+            try {  
+                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+                float x1 = (float)data.getDouble("x1");  
+                float y1 = (float)data.getDouble("y1");  
+           
+                float x2 = (float)data.getDouble("x2");  
+                float y2 = (float)data.getDouble("y2");
+               
+                boolean b1 = (boolean)data.getBoolean("b1");
+           
+            //  System.out.println(x1);
+            //  System.out.println(y1);
+            //  System.out.println(x2);
+                System.out.println(y2);
+            //
+                game.x1 = x1;
+                game.y1 = y1;
+           
+                game.x2 = x2;
+                game.y2 = y2;
+               
+                game.player1.isBerek = b1;
+                game.player2.isBerek = !game.player1.isBerek;
+           
+       
+            } catch (Exception e) {  
+                //System.out.println("BłAD@@@@@@@@ ODCZYTU@@@@@@@@CLIENT");
+            }  
+        }
+        else{
+           
+            try {  
+               
+                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
+               
+                float knobX = (float)data.getDouble("knobX");  
+                float knobY = (float)data.getDouble("knobY");  
+           
+                //System.out.println(knobX);
+                //System.out.println(knobY);
+           
+                game.Knobx2 = knobX;
+                game.Knoby2 = knobY;
+           
+       
+            } catch (Exception e) {  
+                //System.out.println("BłAD@@@@@@@@ ODCZYTU@@@@@@@@SERVER");
+            }
+        }
 
 	}
 
