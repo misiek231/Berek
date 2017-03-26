@@ -15,18 +15,33 @@ public class TimeBoost extends RandomObject {
 	{
 		super(game);
 		
-		texture = new Texture("randomObjects/TimeBoost.png");
-		
-		Timer.schedule(new Task() 
-		{			
-			@Override
-			public void run() 
-			{
-				exist = false;				
-			}		
-		}, liveTime);
+		init();
 	}		
 
+	
+
+	public TimeBoost(Berek game, float x, float y) {
+		super(game);
+		
+		setPosition(x, y);
+		
+		init();
+	}
+
+	private void init() {
+		texture = new Texture("randomObjects/TimeBoost.png");
+				
+				Timer.schedule(new Task() 
+				{			
+					@Override
+					public void run() 
+					{
+						exist = false;				
+					}		
+				}, liveTime);
+				
+			}
+	
 	@Override
 	public void addEffectsToPlayers(Player playerTouchet, Player playerNotTouchet) 
 	{

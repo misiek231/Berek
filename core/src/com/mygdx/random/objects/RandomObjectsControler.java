@@ -46,28 +46,45 @@ public class RandomObjectsControler {
 					
 						case 1:
 						
-							randomObjects.add(new SpeedBoster(game)); 
+							SpeedBoster speedBooster = new SpeedBoster(game);
+							
+							sendObjectsData(speedBooster, 1);
+							
+							randomObjects.add(speedBooster); 
+							
 							System.out.println("object added");
 						
 							break;
 							
 						case 2:
 							
-							randomObjects.add(new SlowPlayerObject(game)); 
+							SlowPlayerObject slowPlayerObject = new SlowPlayerObject(game);
+							
+							sendObjectsData(slowPlayerObject, 2);
+							
+							randomObjects.add(slowPlayerObject); 
 							System.out.println("object added");
 						
 							break;
 							
 						case 3:
 							
-							randomObjects.add(new EscapeBoost(game)); 
+							EscapeBoost escapeBoost = new EscapeBoost(game);
+							
+							sendObjectsData(escapeBoost, 3);
+							
+							randomObjects.add(escapeBoost); 
 							System.out.println("object added");
 						
 							break;
 							
 						case 4:
 							
-							randomObjects.add(new TimeBoost(game)); 
+							TimeBoost timeBoost = new TimeBoost(game);
+							
+							sendObjectsData(timeBoost, 4);
+							
+							randomObjects.add( timeBoost); 
 							System.out.println("object added");
 						
 							break;
@@ -75,18 +92,17 @@ public class RandomObjectsControler {
 						default:
 							break;
 					}	
-					
-					sendObjectsData();
-					
 				}	
 			}
-		}, 1, 1);	
+		}, 1, 20);	
 		
 	}	
 	
 	public void drowObjects(){
 		
 		removeObjectIndex = -1;
+		
+		System.out.println("ilosc" + randomObjects.size());
 		
 		for (RandomObject randomObject : randomObjects) {
 			
@@ -102,7 +118,10 @@ public class RandomObjectsControler {
 				randomObject.exist = false;
 			}
 			
-			batch.draw(randomObject.getTexture(), randomObject.getX(), randomObject.getY(), randomObject.getWidth(), randomObject.getHeight());
+			System.out.println("rysowanie " + randomObject.getX());
+		
+				batch.draw(randomObject.getTexture(), randomObject.getX(), randomObject.getY(), randomObject.getWidth(), randomObject.getHeight());
+			
 			
 			if(!randomObject.exist)
 				removeObjectIndex = randomObjects.indexOf(randomObject);
@@ -117,14 +136,19 @@ public class RandomObjectsControler {
 		}
 	}	
 	
-	public void sendObjectsData(){
+	public void sendObjectsData(RandomObject obj, int type){
 		
 		
 		JSONObject data = new JSONObject(); 
 		
+		
+		
 		try {
-			data.put("objects", randomObjects);
+			data.put("objx", obj.x);
+			data.put("objy", obj.x);
+			data.put("objtyp", type);
 			
+<<<<<<< HEAD
 			System.out.println("objekty wys³ane");
 		} catch (JSONException e) {
 			System.out.println("objekty nie wys³ane");
@@ -139,9 +163,61 @@ public class RandomObjectsControler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+=======
+			WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());
+			
+			System.out.println("obj Wys³any");
+			
+		}catch (Exception e) {
+			System.out.println("b³¹d wysy³u");
+		}	
+	}
+	
+	
+	
+	public void AddObject(float x, float y, int type){
+		
+		System.out.println("AddObject function ");
+		
+		switch (type) {
+		
+		case 1:
+					
+			randomObjects.add(new SpeedBoster(game, x, y)); 
+			
+			System.out.println("object added");
+		
+			break;
+			
+		case 2:
+			
+			randomObjects.add(new SlowPlayerObject(game, x, y)); 
+			System.out.println("object added");
+		
+			break;
+			
+		case 3:
+			
+			randomObjects.add(new EscapeBoost(game, x, y)); 
+			System.out.println("object added");
+		
+			break;
+			
+		case 4:
+			
+
+			
+			randomObjects.add(new TimeBoost(game, x, y)); 
+			System.out.println("object added");
+		
+			break;
+		
+		default:
+			break;
+	}	
+>>>>>>> new
 		
 	
 		
 	}
-	
 }

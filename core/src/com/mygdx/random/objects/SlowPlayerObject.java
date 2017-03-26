@@ -15,7 +15,22 @@ public class SlowPlayerObject extends RandomObject {
 
 	public SlowPlayerObject(Berek game) {
 		super(game);
-		// TODO Auto-generated constructor stub
+		init();
+		
+	}
+
+
+
+	public SlowPlayerObject(Berek game, float x, float y) {
+		super(game);
+		
+		setPosition(x, y);
+		
+		init();
+	}
+
+	private void init() {
+		
 		texture = new Texture("randomObjects/SlowBoost.png");
 		
 		Timer.schedule(new Task() {
@@ -26,8 +41,9 @@ public class SlowPlayerObject extends RandomObject {
 				
 			}
 		}, liveTime);
+		
 	}
-
+	
 	@Override
 	public void addEffectsToPlayers(Player playerTouchet, final Player playerNotTouchet) {
 		// TODO Auto-generated method stub
