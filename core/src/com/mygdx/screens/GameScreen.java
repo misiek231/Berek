@@ -138,9 +138,12 @@ public class GameScreen extends AbstractScreen{
 		
 		batch.begin();	
 		
-			if(roundStart)
+			if(roundStart){
+		
 				game.randomObjectsControler.drowObjects();
-		 
+	
+				System.out.println("drawing ojects");
+			}
 		 	batch.draw(game.player1.getTexture(), game.player1.getX(), game.player1.getY(), game.player1.width, game.player1.height);
 		 	batch.draw(game.player2.getTexture(), game.player2.getX(), game.player2.getY(), game.player2.width, game.player2.height);
 		 
@@ -218,6 +221,7 @@ public class GameScreen extends AbstractScreen{
 				data.put("y2", game.player2.getY());  
 				data.put("b1", game.player1.isBerek); 
 				data.put("time", lRoundTime.getText());
+				//data.put("objects", game.randomObjectsControler.randomObjects);
 				
 				System.out.println("Server wysy³a");
 				WarpClient.getInstance().sendUDPUpdatePeers(data.toString().getBytes());			
@@ -264,7 +268,7 @@ public class GameScreen extends AbstractScreen{
 						
 						game.startTime = System.currentTimeMillis();
 						
-						game.randomObjectsControler.startRandom();
+						
 						
 						Timer.schedule(new Task(){
 
@@ -310,6 +314,25 @@ public class GameScreen extends AbstractScreen{
 		else{
 			
 			
+			game.startTime = System.currentTimeMillis();
+			
+			Timer.schedule(new Task(){
+
+				@Override
+				public void run() {
+					
+					elapsedTime = (int)( ( System.currentTimeMillis() - game.startTime ) /1000 );
+					
+					if(elapsedTime >= 4){
+
+						roundStart = true;
+						game.randomObjectsControler.startRandom();
+						this.cancel();
+					}
+				}
+
+						
+			}, 0, 0.1f);		
 			
 		}
 		

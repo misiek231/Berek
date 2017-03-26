@@ -242,9 +242,29 @@ public class NotificationListener implements NotifyListener {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdatePeersReceived(UpdateEvent arg0) {
-		 
+		
+		System.out.println("onUpdatePeersReceived");
 		
 		if(!game.server){
+			
+	/*		try {  
+			
+			JSONObject data = new JSONObject(new String( arg0.getUpdate() ) ); 
+			
+			//game.randomObjectsControler.AddObject( (float)data.getDouble("objx") , (float)data.getDouble("objy") , (int)data.getInt("objtyp")); 
+			
+			System.out.println("odbiur");
+			
+			System.out.println((float)data.getDouble("objx"));
+			
+			System.out.println((float)data.getDouble("objy") );
+			
+			System.out.println((int)data.getInt("objtyp"));
+			
+			}catch (Exception e) {
+				System.out.println("błąd odbioru");
+			}*/
+			
 	            try {  
 	                JSONObject data = new JSONObject(new String( arg0.getUpdate() ) );  
 	                float x1 = (float)data.getDouble("x1");  
@@ -258,8 +278,8 @@ public class NotificationListener implements NotifyListener {
 	            //  System.out.println(x1);
 	            //  System.out.println(y1);
 	            //  System.out.println(x2);
-	                System.out.println(y2);
-	            //
+	            //   System.out.println(y2);
+	            
 	                game.x1 = x1;
 	                game.y1 = y1;
 	           

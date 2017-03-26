@@ -21,6 +21,24 @@ public class SpeedBoster extends RandomObject {
 	public SpeedBoster(Berek game) {		
 		super(game);
 		
+		init();
+		
+	}
+
+
+
+
+
+	public SpeedBoster(Berek game, float x, float y) {
+		super(game);
+		
+		setPosition(x, y);
+		
+		init();
+	}
+
+	
+	private void init() {
 		texture = new Texture("randomObjects/SpeedBoost.png");
 		
 		Timer.schedule(new Task() {
@@ -31,8 +49,8 @@ public class SpeedBoster extends RandomObject {
 				
 			}
 		}, liveTime);
+		
 	}
-
 
 	@Override
 	public void addEffectsToPlayers(final Player playerTouchet, Player playerNotTouchet) {

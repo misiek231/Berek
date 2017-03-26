@@ -14,19 +14,34 @@ public class EscapeBoost extends RandomObject {
 	public EscapeBoost(Berek game) {
 		super(game);
 		// TODO Auto-generated constructor stub
+		init();
 		
-		texture = new Texture("randomObjects/EscapeBoost.png");
-		
-		Timer.schedule(new Task() {
-			
-			@Override
-			public void run() {
-				exist = false;
-				
-			}
-		}, liveTime);
 	}	
 
+	
+
+	public EscapeBoost(Berek game, float x, float y) {
+		super(game);
+		
+		setPosition(x, y);
+
+		init();
+	}
+
+	private void init() {
+		texture = new Texture("randomObjects/EscapeBoost.png");
+				
+				Timer.schedule(new Task() {
+					
+					@Override
+					public void run() {
+						exist = false;
+						
+					}
+				}, liveTime);
+				
+			}
+	
 	@Override
 	public void addEffectsToPlayers(final Player playerTouchet, Player playerNotTouchet) {
 		// TODO Auto-generated method stub
